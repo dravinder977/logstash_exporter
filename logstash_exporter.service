@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Logstash Exporter
+Wants=network-online.target
+After=network-online.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/logstash_exporter --logstash.endpoint="http://localhost:9600" --web.listen-address=":9198"
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
+
